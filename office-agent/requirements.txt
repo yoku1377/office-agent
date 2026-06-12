@@ -1,0 +1,11 @@
+fastapi>=0.115
+uvicorn>=0.30
+python-docx>=1.2.0
+python-multipart
+pyyaml
+openai>=1.40        # OpenAI 兼容客户端，用于调用百炼 DashScope
+# 后续 skill 需要时再启用：
+# python-pptx       # PPT 生成
+# docxtpl           # 公文模板
+# dashscope         # 百炼原生 SDK（录音转写/CosyVoice）
+# redis rq          # 任务队列（并发量上来后启用）
