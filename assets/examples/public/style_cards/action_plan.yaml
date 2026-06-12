@@ -1,0 +1,29 @@
+document_type: action_plan
+name: 方案 / 行动计划
+fit_departments:
+  - admin
+  - marketing
+  - product
+purpose: 将目标拆解为阶段、任务、措施、责任和交付物。
+structure:
+  - title: 总体目标
+    rule: 说明目标、范围、周期和预期结果。
+  - title: 重点任务
+    rule: 按业务模块或时间阶段拆解。
+  - title: 实施步骤
+    rule: 明确先后顺序、节点和产出。
+  - title: 保障机制
+    rule: 说明资源、协同、风险和验收。
+tone:
+  - 具体
+  - 可执行
+  - 有节奏
+  - 结果导向
+generation_rules:
+  - 每项任务尽量包含动作、对象、产出。
+  - 对无法确认的指标使用待补充标记，不编造数字。
+  - 营销方案可以更有表达力，但仍需结构清楚。
+polish_rules:
+  - 补齐动作对象，减少空泛口号。
+  - 统一任务动词，如“完成、建立、优化、形成”。
+  - 保持目标、任务、验收之间的一致性。

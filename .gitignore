@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.env
+.venv/
+venv/
+
+storage/uploads/
+storage/outputs/
+storage/tasks/
+
+tests/sample/out*.docx
+tests/sample/generated*_check.docx
+
+*.tmp
+~$*.docx

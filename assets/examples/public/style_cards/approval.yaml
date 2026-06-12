@@ -1,0 +1,28 @@
+document_type: approval
+name: 批复
+fit_departments:
+  - admin
+  - general_office
+purpose: 对请示事项作出明确答复，并提出执行要求。
+structure:
+  - title: 标题
+    rule: 关于……的批复。
+  - title: 来文承接
+    rule: 简要说明收到何项请示或申请。
+  - title: 批复意见
+    rule: 明确同意、原则同意、不同意或补充要求。
+  - title: 执行要求
+    rule: 对后续实施、报备、风险控制提出要求。
+tone:
+  - 简洁
+  - 明确
+  - 权责清楚
+  - 不展开论证
+generation_rules:
+  - 必须有明确态度，不能含糊。
+  - 不替用户虚构审批权限。
+  - 公司内部可改为“回复/审批意见”以降低机关化程度。
+polish_rules:
+  - 删除无关背景铺垫。
+  - 保留审批边界和条件。
+  - 避免把建议性语言改成强制性决定。

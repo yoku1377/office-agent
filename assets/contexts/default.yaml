@@ -1,0 +1,6 @@
+name: default
+terms_path: assets/terms/terms.yaml
+extra_terms: []
+polish:
+  default_level: medium
+  author: AI润色

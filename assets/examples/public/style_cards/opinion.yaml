@@ -1,0 +1,29 @@
+document_type: opinion
+name: 意见
+fit_departments:
+  - admin
+  - general_office
+  - marketing
+purpose: 对较复杂事项提出方向性要求、原则、重点任务和保障措施。
+structure:
+  - title: 背景与意义
+    rule: 说明为什么要做，指出当前问题或目标。
+  - title: 总体要求
+    rule: 提炼指导思想、总体目标、工作原则。
+  - title: 重点任务
+    rule: 分条展开，每条围绕一个明确方向。
+  - title: 保障措施
+    rule: 说明组织、机制、监督、协同等安排。
+tone:
+  - 稳健
+  - 概括
+  - 方向明确
+  - 层次清楚
+generation_rules:
+  - 先搭框架，再填任务，不要把事项堆成流水账。
+  - 任务条目要可归类，避免互相重叠。
+  - 涉及政策或合规判断时必须来自用户材料。
+polish_rules:
+  - 压缩长句，增强层级。
+  - 保留关键限定条件。
+  - 避免营销化夸张表达。

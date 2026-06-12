@@ -1,0 +1,18 @@
+name: admin
+terms_path: assets/terms/terms.yaml
+extra_terms: []
+examples:
+  public_sources: assets/examples/public/official_sources.yaml
+  style_cards:
+    notice: assets/examples/public/style_cards/notice.yaml
+    opinion: assets/examples/public/style_cards/opinion.yaml
+    action_plan: assets/examples/public/style_cards/action_plan.yaml
+    approval: assets/examples/public/style_cards/approval.yaml
+templates:
+  notice: assets/templates/docx/admin/notice.docx
+  opinion: assets/templates/docx/admin/opinion.docx
+  action_plan: assets/templates/docx/admin/action_plan.docx
+  approval: assets/templates/docx/admin/approval.docx
+polish:
+  default_level: medium
+  author: AI润色

@@ -1,0 +1,100 @@
+# Public official references for style and structure.
+#
+# Do not copy full source text into generated company documents. Use these
+# entries to learn document shape, headings, recipient conventions, release
+# metadata, and level of formality.
+
+sources:
+  - id: gov_notice_population_sample_2025
+    title: 国务院办公厅关于开展2025年全国1%人口抽样调查的通知
+    document_type: notice
+    department_fit:
+      - admin
+      - general_office
+    source_org: 国务院办公厅
+    source_url: https://www.nhc.gov.cn/bgt/gwywj2/202409/6bef5ac6f4c045d98000b3f75bd795bd.shtml
+    use_for:
+      - notice_structure
+      - recipient_block
+      - numbered_task_sections
+      - formal_action_requirements
+    avoid_learning:
+      - population_policy_facts
+      - government_specific_responsibilities
+      - dates_and_numbers
+    notes: 适合学习“通知”类文件的缘由说明、事项分解、组织要求和结尾安排。
+
+  - id: gov_opinion_trade_policy_compliance_2025
+    title: 国务院办公厅关于进一步加强贸易政策合规工作的意见
+    document_type: opinion
+    department_fit:
+      - admin
+      - general_office
+      - marketing
+    source_org: 国务院办公厅
+    source_url: https://www.mee.gov.cn/zcwj/gwywj/202503/t20250325_1104638.shtml
+    use_for:
+      - opinion_structure
+      - background_then_requirements
+      - policy_task_decomposition
+      - restrained_formal_tone
+    avoid_learning:
+      - trade_policy_facts
+      - legal_or_regulatory_claims
+      - external_affairs_positioning
+    notes: 适合学习“意见/实施意见”类文件从背景、总体要求到重点任务的展开方式。
+
+  - id: gov_plan_energy_carbon_2024_2025
+    title: 国务院关于印发《2024—2025年节能降碳行动方案》的通知
+    document_type: action_plan
+    department_fit:
+      - admin
+      - product
+      - marketing
+    source_org: 国务院
+    source_url: https://www.mee.gov.cn/zcwj/gwywj/202405/t20240530_1074495.shtml
+    use_for:
+      - plan_structure
+      - target_then_measures
+      - measurable_objectives
+      - multi_section_action_layout
+    avoid_learning:
+      - energy_policy_facts
+      - national_targets
+      - industry_specific_numbers
+    notes: 适合学习“方案/行动计划”类文件的目标、任务、措施和责任安排。
+
+  - id: gov_approval_shenzhen_spatial_plan
+    title: 国务院关于《深圳市国土空间总体规划（2021—2035年）》的批复
+    document_type: approval
+    department_fit:
+      - admin
+      - general_office
+    source_org: 国务院
+    source_url: https://stic.sz.gov.cn/xxgk/kjgh/content/post_11937165.html
+    use_for:
+      - approval_structure
+      - concise_reply_style
+      - condition_and_requirement_sections
+    avoid_learning:
+      - city_planning_facts
+      - place_specific_positioning
+      - approval_authority_language
+    notes: 适合学习“批复”类文件的短正文、明确态度、后续要求和权威语气。
+
+  - id: standard_gbt_9704_2012
+    title: GB/T 9704-2012 党政机关公文格式
+    document_type: formatting_standard
+    department_fit:
+      - admin
+      - general_office
+    source_org: 国家标准全文公开系统
+    source_url: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=F3CC9BEF482524C895FDA7A08BB4A70E
+    use_for:
+      - official_document_format
+      - page_layout_reference
+      - typography_reference
+    avoid_learning:
+      - business_content
+      - company_policy
+    notes: 作为公文格式校验和模板制作依据，不作为正文内容样例。

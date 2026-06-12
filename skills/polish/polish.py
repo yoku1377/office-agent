@@ -68,12 +68,21 @@ def _fix_settings(doc):
             zoom.set(qn("w:percent"), "100")
 
 
-def polish(in_path, level="medium", terms_path=None, out_path=None, author="AI润色"):
+def polish(
+    in_path,
+    level="medium",
+    terms_path=None,
+    terms=None,
+    style_card=None,
+    out_path=None,
+    author="AI润色",
+):
     doc = Document(in_path)
     paragraphs = extract_paragraphs(doc)
-    terms = load_terms(terms_path)
+    loaded_terms = load_terms(terms_path)
+    terms = list(dict.fromkeys(loaded_terms + list(terms or [])))
 
-    system, user = build_prompt(paragraphs, level, terms)
+    system, user = build_prompt(paragraphs, level, terms, style_card=style_card)
     raw = get_llm().chat(system, user)
     revisions = parse_llm_json(raw)
 
@@ -93,5 +102,5 @@ if __name__ == "__main__":
     ap.add_argument("--terms", default="assets/terms/terms.yaml")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
-    result = polish(args.input, args.level, args.terms, args.out)
+    result = polish(args.input, level=args.level, terms_path=args.terms, out_path=args.out)
     print(json.dumps(result, ensure_ascii=False, indent=2))

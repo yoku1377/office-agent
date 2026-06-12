@@ -1,0 +1,14 @@
+name: marketing
+terms_path: assets/terms/terms.yaml
+extra_terms: []
+examples:
+  public_sources: assets/examples/public/official_sources.yaml
+  style_cards:
+    action_plan: assets/examples/public/style_cards/action_plan.yaml
+    opinion: assets/examples/public/style_cards/opinion.yaml
+templates:
+  action_plan: assets/templates/docx/marketing/action_plan.docx
+  opinion: assets/templates/docx/marketing/opinion.docx
+polish:
+  default_level: medium
+  author: AI润色

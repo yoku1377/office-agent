@@ -1,0 +1,12 @@
+name: product
+terms_path: assets/terms/terms.yaml
+extra_terms: []
+examples:
+  public_sources: assets/examples/public/official_sources.yaml
+  style_cards:
+    action_plan: assets/examples/public/style_cards/action_plan.yaml
+templates:
+  action_plan: assets/templates/docx/product/action_plan.docx
+polish:
+  default_level: medium
+  author: AI润色
