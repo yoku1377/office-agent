@@ -52,7 +52,7 @@ def generate_pptx(
     terms: list[str] | None = None,
     out_path: str | None = None,
     skip_review: bool = False,
-    max_review_retries: int = 1,
+    max_review_retries: int = 2,
 ) -> dict:
     """PPT 生成主流程。
 
@@ -103,9 +103,15 @@ def generate_pptx(
                     "Review found %d high-severity issues, regenerating...",
                     len(high_issues),
                 )
-                # 将问题反馈给 LLM 重新生成
+                # 将问题反馈给 LLM 重新生成，附带具体修复约束
                 issues_text = json.dumps(high_issues, ensure_ascii=False, indent=2)
-                retry_system = system + f"\n\n【上一版自检发现的问题】\n{issues_text}\n请修正以上问题后重新生成大纲。"
+                fix_constraints = """【修复约束】
+- 文字溢出：减少该页要点数量（每条不超过30字），或拆分为多页；
+- 内容重叠：更换为更宽松的版式，或减少内容量；
+- 空白过多：增加要点数量或补充图表数据；
+- 图表不可读：减少 categories 和 series 数量；
+- 修改时仅调整有问题的页面，其余页面保持不变。"""
+                retry_system = system + f"\n\n【上一版自检发现的问题】\n{issues_text}\n{fix_constraints}\n请修正以上问题后重新生成完整大纲。"
                 raw_retry = get_llm().chat(retry_system, user)
                 data_retry = parse_generated_json(raw_retry)
                 try:
@@ -128,7 +134,7 @@ if __name__ == "__main__":
     ap.add_argument("--terms", default="assets/terms/terms.yaml", help="术语表路径")
     ap.add_argument("--out", default=None, help="输出文件路径")
     ap.add_argument("--skip-review", action="store_true", help="跳过自检步骤")
-    ap.add_argument("--max-review-retries", type=int, default=1, help="自检回修最大次数")
+    ap.add_argument("--max-review-retries", type=int, default=2, help="自检回修最大次数")
     args = ap.parse_args()
     result = generate_pptx(
         args.brief,
