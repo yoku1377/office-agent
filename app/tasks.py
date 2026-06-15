@@ -12,6 +12,7 @@ from typing import Any
 from app.context import get_template_path, load_context, load_style_card
 from app.paths import OUTPUT_DIR, TASK_DIR, UPLOAD_DIR, ensure_storage_dirs
 from skills.generate_docx.generate import generate_docx
+from skills.generate_pptx.generate import generate_pptx
 from skills.polish.polish import polish
 
 
@@ -90,8 +91,10 @@ def make_upload_path(task_id: str, filename: str) -> Path:
 
 def make_output_path(task_id: str, filename: str, suffix: str) -> Path:
     base = safe_filename(filename)
-    if base.lower().endswith(".docx"):
-        base = base[:-5]
+    for ext in (".docx", ".pptx"):
+        if base.lower().endswith(ext):
+            base = base[: -len(ext)]
+            return OUTPUT_DIR / f"{task_id}_{base}{suffix}{ext}"
     return OUTPUT_DIR / f"{task_id}_{base}{suffix}.docx"
 
 
@@ -102,7 +105,7 @@ def run_task(task_id: str) -> None:
 
     try:
         store.update(task_id, status="running", error=None)
-        if task["skill"] not in {"polish", "generate_docx"}:
+        if task["skill"] not in {"polish", "generate_docx", "generate_pptx"}:
             raise ValueError(f"Unsupported skill: {task['skill']}")
 
         context = load_context(task.get("department"))
@@ -138,6 +141,35 @@ def run_task(task_id: str) -> None:
                     "render_engine": result["render_engine"],
                     "template_path": result.get("template_path"),
                     "template_error": result.get("template_error"),
+                },
+            )
+            return
+
+        if task["skill"] == "generate_pptx":
+            out_path = make_output_path(
+                task_id,
+                task["original_filename"] or "presentation.pptx",
+                "_ppt",
+            )
+            # PPT 模板路径：优先从 params 获取，否则从 context 获取
+            pptx_template = params.get("template_path") or context.templates.get("pptx")
+            result = generate_pptx(
+                params.get("brief", ""),
+                template_path=pptx_template,
+                terms_path=context.terms_path,
+                terms=context.extra_terms,
+                out_path=str(out_path),
+            )
+            store.update(
+                task_id,
+                status="succeeded",
+                output_path=result["out"],
+                result={
+                    "title": result["title"],
+                    "context": context.name,
+                    "page_count": result["page_count"],
+                    "template_used": result["template_used"],
+                    "review": result.get("review"),
                 },
             )
             return
