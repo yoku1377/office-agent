@@ -13,6 +13,7 @@ templates:
   opinion: assets/templates/docx/admin/opinion.docx
   action_plan: assets/templates/docx/admin/action_plan.docx
   approval: assets/templates/docx/admin/approval.docx
+  pptx: assets/templates/pptx/default.pptx
 polish:
   default_level: medium
   author: AI润色
