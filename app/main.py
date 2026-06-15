@@ -144,6 +144,30 @@ async def create_generate_docx_task(
     background_tasks.add_task(run_task, task["id"])
     return _task_response(task)
 
+@app.post("/tasks/generate-pptx")
+async def create_generate_pptx_task(
+    background_tasks: BackgroundTasks,
+    brief: str = Form(...),
+    department: str = Form("admin"),
+    template_path: str = Form(None),
+    user_id: str = Form("anonymous"),
+):
+    if not has_skill("generate_pptx"):
+        raise HTTPException(status_code=400, detail="generate_pptx skill 未安装")
+    if not brief.strip():
+        raise HTTPException(status_code=400, detail="brief 不能为空")
+
+    task = store.create(
+        skill="generate_pptx",
+        original_filename="presentation.pptx",
+        input_path="",
+        params={"brief": brief, "template_path": template_path},
+        department=department,
+        user_id=user_id,
+    )
+    background_tasks.add_task(run_task, task["id"])
+    return _task_response(task)
+
 
 @app.get("/tasks/{task_id}")
 def get_task(task_id: str):
